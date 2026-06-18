@@ -1,0 +1,271 @@
+/* ============================================
+   DESIGN SYSTEM — bundleable CSS entry
+   Tokens + component styles without Tailwind imports.
+   Used by design-sync (cfg.cssEntry) so the bundle
+   is self-contained and resolves without a build tool.
+   ============================================ */
+
+/* ---- Tokens ---- */
+
+:root {
+  /* --- Primitive Scale: Neutrals --- */
+  --neutral-0:   #ffffff;
+  --neutral-50:  #f5f4f2;
+  --neutral-100: #e8e6e1;
+  --neutral-200: #cdc9c0;
+  --neutral-300: #a8a397;
+  --neutral-400: #7d7870;
+  --neutral-500: #57534a;
+  --neutral-600: #3a3731;
+  --neutral-700: #28261f;
+  --neutral-800: #1e1c17;
+  --neutral-900: #14151a;
+  --neutral-950: #0d0e12;
+
+  /* --- Primitive Scale: Accent (warm sage) --- */
+  --accent-100: #e8ede9;
+  --accent-200: #c5d4c7;
+  --accent-300: #9ab89d;
+  --accent-400: #6e9c72;
+  --accent-500: #4a7c50;
+  --accent-600: #356039;
+  --accent-700: #234027;
+
+  /* --- Semantic Tokens: Dark Mode (default) --- */
+  --color-bg:           var(--neutral-900);
+  --color-bg-subtle:    var(--neutral-800);
+  --color-surface:      var(--neutral-700);
+  --color-border:       var(--neutral-600);
+  --color-border-subtle: var(--neutral-700);
+
+  --color-text-primary:  var(--neutral-50);
+  --color-text-secondary: var(--neutral-300);
+  --color-text-muted:    var(--neutral-500);
+  --color-text-inverse:  var(--neutral-900);
+
+  --color-accent:        var(--accent-400);
+  --color-accent-subtle: var(--accent-700);
+
+  /* --- Typography --- */
+  --font-serif: 'Georgia', 'Times New Roman', serif;
+  --font-sans:  system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono:  'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+
+  --text-xs:   0.75rem;
+  --text-sm:   0.875rem;
+  --text-base: 1rem;
+  --text-lg:   1.125rem;
+  --text-xl:   1.25rem;
+  --text-2xl:  1.5rem;
+  --text-3xl:  2rem;
+  --text-4xl:  2.75rem;
+  --text-5xl:  3.75rem;
+
+  --leading-tight:  1.2;
+  --leading-snug:   1.35;
+  --leading-normal: 1.6;
+  --leading-loose:  1.8;
+
+  --tracking-tight:  -0.03em;
+  --tracking-normal: 0em;
+  --tracking-wide:   0.06em;
+  --tracking-wider:  0.12em;
+
+  /* --- Spacing --- */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.25rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* --- Border Radius --- */
+  --radius-none: 0px;
+  --radius-sm:   2px;
+  --radius-md:   4px;
+  --radius-lg:   8px;
+  --radius-full: 9999px;
+
+  /* --- Shadows --- */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.6);
+
+  /* --- Transitions --- */
+  --transition-fast:   150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow:   400ms ease;
+}
+
+[data-theme="light"] {
+  --color-bg:            var(--neutral-50);
+  --color-bg-subtle:     var(--neutral-100);
+  --color-surface:       var(--neutral-0);
+  --color-border:        var(--neutral-200);
+  --color-border-subtle: var(--neutral-100);
+
+  --color-text-primary:   var(--neutral-900);
+  --color-text-secondary: var(--neutral-500);
+  --color-text-muted:     var(--neutral-400);
+  --color-text-inverse:   var(--neutral-50);
+
+  --color-accent:        var(--accent-500);
+  --color-accent-subtle: var(--accent-100);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* ---- Base reset (needed for preview cards) ---- */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--color-bg);
+}
+
+/* ---- Typography base ---- */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text-primary);
+}
+
+h1 { font-size: var(--text-5xl); }
+h2 { font-size: var(--text-4xl); }
+h3 { font-size: var(--text-3xl); }
+h4 { font-size: var(--text-2xl); }
+h5 { font-size: var(--text-xl); }
+h6 { font-size: var(--text-lg); }
+
+p {
+  color: var(--color-text-secondary);
+  line-height: var(--leading-normal);
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: opacity var(--transition-fast);
+}
+
+a:hover { opacity: 0.75; }
+
+code {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  background: var(--color-bg-subtle);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+}
+
+/* ---- Button ---- */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+
+.button--sm  { font-size: var(--text-xs);   padding: var(--space-2) var(--space-4); }
+.button--md  { font-size: var(--text-sm);   padding: var(--space-3) var(--space-6); }
+.button--lg  { font-size: var(--text-base); padding: var(--space-4) var(--space-8); }
+
+.button--primary {
+  background: var(--color-accent);
+  color: var(--color-text-inverse);
+  border-color: var(--color-accent);
+}
+.button--primary:hover { opacity: 0.85; }
+
+.button--secondary {
+  background: transparent;
+  color: var(--color-text-primary);
+  border-color: var(--color-border);
+}
+.button--secondary:hover { border-color: var(--color-text-secondary); }
+
+.button--ghost {
+  background: transparent;
+  color: var(--color-text-secondary);
+  border-color: transparent;
+}
+.button--ghost:hover { color: var(--color-text-primary); }
+
+.button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* ---- Card ---- */
+
+.card {
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.card--padded { padding: var(--space-6); }
+
+/* ---- Badge ---- */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--text-xs);
+  font-family: var(--font-sans);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  border: 1px solid transparent;
+}
+
+.badge--default {
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
+  border-color: var(--color-border);
+}
+
+.badge--accent {
+  background: var(--color-accent-subtle);
+  color: var(--color-accent);
+  border-color: var(--color-accent-subtle);
+}
+
+.badge--muted {
+  background: transparent;
+  color: var(--color-text-muted);
+  border-color: var(--color-border-subtle);
+}

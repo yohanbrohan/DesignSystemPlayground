@@ -1,0 +1,12 @@
+{
+  "projectId": "b957473e-1d51-4866-8e7f-03b0f66de47e",
+  "shape": "package",
+  "pkg": "design-system-playground",
+  "entry": "./dist/index.js",
+  "srcDir": "components/ui",
+  "cssEntry": "styles/design-system.css",
+  "overrides": {
+    "Button": { "cardMode": "column" }
+  },
+  "readmeHeader": ".design-sync/conventions.md"
+}
